@@ -12,7 +12,92 @@ const INPUT_3 = ["5", "YCPZY", "CYZZP", "CCPPP", "YCYZC", "CPPZZ"]; // expected 
 const input = INPUT_1;
 
 // Solution
+
+// Variables
 const N = parseInt(input[0]);
 const candies = input.slice(1).map((e) => e.split(""));
 
-console.log("a");
+let max = 0;
+
+// Functions
+function checkMaxLength() {
+  let currentBoardMax = 1;
+
+  for (let i = 0; i < N; i++) {
+    let rowSum = 1;
+    let columnSum = 1;
+
+    for (let j = 0; j < N - 1; j++) {
+      const currentCandyPosition = candies[i][j];
+      // check row legnth
+      if (currentCandyPosition === candies[i][j + 1]) {
+        rowSum++;
+      } else {
+        if (rowSum > currentBoardMax) currentBoardMax = rowSum;
+        rowSum = 1;
+      }
+
+      // check column length
+      if (currentCandyPosition === candies[i + 1][j]) {
+        columnSum++;
+      } else {
+        if (columnSum > currentBoardMax) currentBoardMax = columnSum;
+        columnSum = 1;
+      }
+    }
+
+    const biggerSum = Math.max(rowSum, columnSum);
+    if (biggerSum > currentBoardMax) currentBoardMax = biggerSum;
+  }
+
+  // return max
+  return currentBoardMax;
+}
+
+function swap(i, j) {
+  const candyTmp = candies[i][j];
+  let rowSwappedMax = 0;
+  let columnSwappedMax = 0;
+
+  // row-swap
+  if (j < N - 1) {
+    candies[i][j] = candies[i][j + 1];
+    candies[i][j + 1] = candyTmp;
+
+    rowSwappedMax = checkMaxLength();
+
+    candies[i][j + 1] = candies[i][j];
+    candies[i][j] = candyTmp;
+  }
+
+  // column-swap
+  if (i < N - 1) {
+    candies[i][j] = candies[i + 1][j];
+    candies[i + 1][j] = candyTmp;
+
+    columnSwappedMax = checkMaxLength();
+
+    candies[i + 1][j] = candies[i][j];
+    candies[i][j] = candyTmp;
+  }
+
+  // update max length
+  if (rowSwappedMax || columnSwappedMax) {
+    const currentMax = Math.max(rowSwappedMax, columnSwappedMax);
+
+    if (max < currentMax) {
+      max = currentMax;
+    }
+  }
+}
+
+function solve() {
+  for (let i = 0; i < N; i++) {
+    for (let j = 0; j < N; j++) {
+      swap(i, j);
+    }
+  }
+}
+
+// Run
+solve();
