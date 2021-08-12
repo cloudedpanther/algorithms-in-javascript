@@ -9,7 +9,7 @@ const INPUT_1 = ["3", "CCP", "CCP", "PPC"]; // expected output: 3
 const INPUT_2 = ["4", "PPPP", "CYZY", "CCPY", "PPCC"]; // expected output: 4
 const INPUT_3 = ["5", "YCPZY", "CYZZP", "CCPPP", "YCYZC", "CPPZZ"]; // expected output: 4
 
-const input = INPUT_1;
+const input = INPUT_3;
 
 // Solution
 
@@ -28,9 +28,8 @@ function checkMaxLength() {
     let columnSum = 1;
 
     for (let j = 0; j < N - 1; j++) {
-      const currentCandyPosition = candies[i][j];
       // check row legnth
-      if (currentCandyPosition === candies[i][j + 1]) {
+      if (candies[i][j] === candies[i][j + 1]) {
         rowSum++;
       } else {
         if (rowSum > currentBoardMax) currentBoardMax = rowSum;
@@ -38,7 +37,7 @@ function checkMaxLength() {
       }
 
       // check column length
-      if (currentCandyPosition === candies[i + 1][j]) {
+      if (candies[j][i] === candies[j + 1][i]) {
         columnSum++;
       } else {
         if (columnSum > currentBoardMax) currentBoardMax = columnSum;
@@ -97,6 +96,8 @@ function solve() {
       swap(i, j);
     }
   }
+
+  console.log(max);
 }
 
 // Run
