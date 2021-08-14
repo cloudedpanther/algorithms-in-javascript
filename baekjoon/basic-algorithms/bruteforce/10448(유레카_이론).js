@@ -11,12 +11,40 @@ const input = INPUT_1;
 
 // Variables
 const T = input[0];
-const MAX = Math.max(...input);
+const answer = Array(T + 1).fill(0);
 const TRI_NUM = [];
 
-while (1) {}
+let n = 0;
+while (1) {
+  const tri = (n * (n + 1)) / 2;
+  if (tri > 1000) break;
 
-for (let i = 0; i <= T; i++) {
-  const K = input[i];
-  console.log(K);
+  TRI_NUM.push(tri);
+  n++;
 }
+
+const TRI_LENGTH = TRI_NUM.length - 1;
+
+for (let i = 1; i <= T; i++) {
+  const K = input[i];
+
+  for (let j = 1; TRI_NUM[j] < K; j++) {
+    const K_1 = K - TRI_NUM[j];
+    console.log(i, K_1);
+    if (K_1 > 0) {
+      for (let k = 1; TRI_NUM[k] < K_1; k++) {
+        const K_2 = K_1 - TRI_NUM[k];
+
+        if (K_2 > 0) {
+          for (let l = 1; TRI_NUM[l] <= K_2; l++) {
+            const K_3 = K_2 - TRI_NUM[l];
+
+            if (K_3 === 0) answer[i] === 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+console.log(answer);
