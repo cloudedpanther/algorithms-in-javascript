@@ -16,37 +16,24 @@
 // // Solution
 // function solution(input) {
 //   // Variables
-//   const MAX = 100000;
 //   const T = parseInt(input[0]);
 //   let stickers = [];
-//   let lastRow = 0;
-//   let dp = new Array(MAX);
+//   let dp = [];
+//   let lastColumn = 0;
 
 //   // Functions
-//   function findBest(state, startColumn) {
-//     const nextColumn = startColumn + 1;
-//     if (startColumn === lastRow) return 0;
-//     if (dp[startColumn][state] !== -1) return dp[startColumn][state];
+//   function fillDP() {
+//     for (let i = 0; i < lastColumn - 1; i++) {
+//       let value = stickers[i][0];
+//       dp[i + 1][1] = Math.max(dp[i][0], dp[i][2] + stickers[i + 1][1]); // 오른쪽 위에서 스티커를 뗀 경우
+//       dp[i + 1][2] = Math.max(dp[i][0], dp[i][1] + stickers[i + 1][0]); // 오른쪽 아래에서 스티커를 뗀 경우
+//       dp[i + 1][0] = Math.max(dp[i + 1][1], dp[i + 1][2]); // 오른쪽에서 스티커를 떼지 않은 경우
+//     }
 
-//     let value = findBest(0, nextColumn);
-//     if (state !== 1)
-//       value = Math.max(
-//         value,
-//         findBest(1, nextColumn) + stickers[startColumn][0]
-//       );
-//     if (state !== 2)
-//       value = Math.max(
-//         value,
-//         findBest(2, nextColumn) + stickers[startColumn][1]
-//       );
-
-//     dp[startColumn][state] = value;
-//     return value;
+//     return dp[lastColumn - 1][0];
 //   }
 
 //   function solve() {
-//     let answer = "";
-
 //     for (let i = 1; i < T * 3 + 1; i += 3) {
 //       // initialize stickers
 //       const n = parseInt(input[i]);
@@ -57,16 +44,18 @@
 //         newStickers.push([firstRow[j], secondRow[j]]);
 //       }
 //       stickers = newStickers;
-//       lastRow = n;
-//       for (let i = 0; i < MAX; i++) {
+//       lastColumn = n;
+//       dp = new Array(n);
+//       for (let i = 0; i < n; i++) {
 //         dp[i] = [-1, -1, -1];
 //       }
+//       dp[0][0] = Math.max(stickers[0][0], stickers[0][1]);
+//       dp[0][1] = stickers[0][1];
+//       dp[0][2] = stickers[0][0];
 
 //       // calculate
-//       answer += findBest(0, 0) + "\n";
+//       console.log(fillDP());
 //     }
-
-//     console.log(answer.slice(0, -1));
 //   }
 
 //   // Run
