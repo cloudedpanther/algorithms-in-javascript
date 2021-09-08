@@ -1,3 +1,5 @@
+// const INPUT_1 = [];
+
 // const input = INPUT_1;
 
 // // Solution
