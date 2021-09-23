@@ -18,7 +18,7 @@ const INPUT_2 = ["3", "((", "))", "())(()"];
 // NO
 // NO
 
-const input = INPUT_2;
+const input = INPUT_1;
 
 // Solution
 function solution(input) {
@@ -27,24 +27,24 @@ function solution(input) {
   const N = parseInt(input[0]);
 
   // Functions
+  function isVPS(index) {
+    const seq = input[index].split("");
+    for (let i = 0; i < seq.length; i++) {
+      if (seq[i] === "(") stack.push(1);
+      else if (stack.length === 0) return "NO";
+      else stack.pop();
+    }
+    if (stack.length !== 0) return "NO";
+    else return "YES";
+  }
+
   function solve() {
     // initialize variables
     let answer = "";
 
     // solve
     for (let i = 1; i < N + 1; i++) {
-      const seq = input[i].split("");
-      let flag = 1;
-      for (let j = 0; j < seq.length; j++) {
-        if (seq[j] === "(") stack.push(1);
-        else if (stack.length === 0) {
-          answer += "NO";
-          flag = 0;
-          break;
-        } else stack.pop();
-      }
-      if (stack.length !== 0) answer += "NO";
-      else if (flag === 1) answer += "YES";
+      answer += isVPS(i);
       if (i < N) answer += "\n";
       stack = [];
     }
