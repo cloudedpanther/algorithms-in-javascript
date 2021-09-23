@@ -1,7 +1,22 @@
 const INPUT_1 = ["abcd", "3", "P x", "L", "P y"];
 const INPUT_2 = ["abc", "9", "L", "L", "L", "L", "L", "P x", "L", "B", "P y"];
+const INPUT_3 = [
+  "dmih",
+  "11",
+  "B",
+  "B",
+  "P x",
+  "L",
+  "B",
+  "B",
+  "B",
+  "P y",
+  "D",
+  "D",
+  "P z",
+];
 
-const input = INPUT_2;
+const input = INPUT_3;
 
 // Solution
 function solution(input) {
@@ -13,6 +28,7 @@ function solution(input) {
     // initialize variables
     const leftSide = input[0].split("");
     const rightSide = [];
+    let answer = "";
 
     for (let i = 2; i < N + 2; i++) {
       const command = input[i].split(" ");
@@ -25,10 +41,13 @@ function solution(input) {
     }
 
     // console.log(leftSide.join("") + rightSide.reverse().join(""));
-    while (rightSide.length > 0) {
-      leftSide.push(rightSide.pop());
+    while (leftSide.length > 0) {
+      rightSide.push(leftSide.pop());
     }
-    console.log(leftSide.join(""));
+    while (rightSide.length > 0) {
+      answer += rightSide.pop();
+    }
+    console.log(answer);
   }
 
   // Run
