@@ -24,7 +24,11 @@ function solution(input) {
       if (command[0] === "P") leftSide.push(command[1]);
     }
 
-    console.log(leftSide.join("") + rightSide.reverse().join(""));
+    // console.log(leftSide.join("") + rightSide.reverse().join(""));
+    while (rightSide.length > 0) {
+      leftSide.push(rightSide.pop());
+    }
+    console.log(leftSide.join(""));
   }
 
   // Run
