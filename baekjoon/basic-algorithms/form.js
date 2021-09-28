@@ -8,7 +8,6 @@
 
 //   // Functions
 //   function solve() {
-//     // initialize variables
 //   }
 
 //   // Run
