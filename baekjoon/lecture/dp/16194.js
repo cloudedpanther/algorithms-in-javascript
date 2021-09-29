@@ -12,14 +12,11 @@ function solution(input) {
   // Variables
   const N = parseInt(input[0]);
   const packs = [0].concat(input[1].split(" ").map((pack) => parseInt(pack)));
-  let dp = new Array(N + 1);
+  let dp = new Array(N + 1).fill(1000 * 10000);
 
   // Functions
   function solve() {
     dp[0] = 0;
-    for (let i = 1; i < N + 1; i++) {
-      dp[i] = 10000 * i;
-    }
 
     for (let i = 0; i < N; i++) {
       for (let j = 1; j < N + 1; j++) {
