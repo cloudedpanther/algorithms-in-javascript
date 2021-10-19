@@ -31,7 +31,7 @@
 //       dp[i] += 2;
 //     }
 
-//     console.log(dp[N]);
+//     console.log(dp);
 //   }
 
 //   // Run
