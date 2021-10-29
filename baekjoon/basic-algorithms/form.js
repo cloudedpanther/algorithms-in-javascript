@@ -3,11 +3,11 @@
 // const input = INPUT_1;
 
 // // Solution
-// function solution(input) {
+// const solution = (input) => {
 //   // Variables
 
 //   // Functions
-//   function solve() {
+//   const solve = () => {
 //       //
 //   }
 
