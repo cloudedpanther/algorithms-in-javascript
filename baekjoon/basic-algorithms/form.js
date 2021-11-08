@@ -1,18 +1,18 @@
-const INPUT_1 = [];
+// const INPUT_1 = [];
 
-const input = INPUT_1;
+// const input = INPUT_1;
 
-// Solution
-const solution = (input) => {
-  // Variables
+// // Solution
+// const solution = (input) => {
+//   // Variables
 
-  // Functions
-  const solve = () => {
-      //
-  }
+//   // Functions
+//   const solve = () => {
+//       //
+//   }
 
-  // Run
-  solve();
-}
+//   // Run
+//   solve();
+// }
 
-solution(input);
+// solution(input);
