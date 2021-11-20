@@ -26,8 +26,7 @@ const solution = (input) => {
   };
 
   const go = (index) => {
-    if (index === N) {
-    }
+    //
   };
 
   const solve = () => {
