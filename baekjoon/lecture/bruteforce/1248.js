@@ -26,7 +26,8 @@ const solution = (input) => {
   };
 
   const go = (index) => {
-    //
+    // never fits
+    console.log(N);
   };
 
   const solve = () => {
