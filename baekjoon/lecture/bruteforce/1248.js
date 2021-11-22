@@ -28,6 +28,7 @@ const solution = (input) => {
   const go = (index) => {
     // never fits
     console.log(N);
+    console.log(sign);
   };
 
   const solve = () => {
