@@ -29,6 +29,7 @@ const solution = (input) => {
     // never fits
     console.log(N);
     console.log(sign);
+    console.log("I will be back!");
   };
 
   const solve = () => {
