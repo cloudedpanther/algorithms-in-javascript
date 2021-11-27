@@ -33,34 +33,26 @@ const input = INPUT_1;
 // Solution
 const solution = (input) => {
   // Variables
-  let S = [];
+  let S = Math.pow(2, 19);
 
   // Functions
   const calc = (input) => {
-    const cmd = input.split(" ");
-    if (cmd[0] === "add") {
-      if (!S.includes(cmd[1])) {
-        S.push(cmd[1]);
-      }
-    } else if (cmd[0] === "remove") {
-      const index = S.indexOf(cmd[1]);
-      if (index !== -1) {
-        S.splice(index, 1);
-      }
-    } else if (cmd[0] === "check") {
-      if (S.includes(cmd[1])) {
-        console.log(1);
-      } else {
-        console.log(0);
-      }
-    } else if (cmd[0] === "toggle") {
-      const index = S.indexOf(cmd[1]);
+    const cmd = input.split(" ")[0];
+    const num = input.length > 1 ? input.split(" ")[1] : null;
+    if (cmd === "add") {
+      S = S | (1 << (num - 1));
+    } else if (cmd === "remove") {
+      S = S & ~(1 << (num - 1));
+    } else if (cmd === "check") {
+      //
+    } else if (cmd === "toggle") {
+      const index = S.indexOf(num);
       if (index === -1) {
-        S.push(cmd[1]);
+        S.push(num);
       } else {
         S.splice(index, 1);
       }
-    } else if (cmd[0] === "all") {
+    } else if (cmd === "all") {
       S = [
         "1",
         "2",
@@ -83,16 +75,20 @@ const solution = (input) => {
         "19",
         "20",
       ];
-    } else if (cmd[0] === "empty") {
+    } else if (cmd === "empty") {
       S = [];
     }
   };
 
   const solve = () => {
-    const M = Number(input[0]);
-    for (let i = 1; i <= M; i++) {
-      calc(input[i]);
-    }
+    // const M = Number(input[0]);
+    // for (let i = 1; i <= M; i++) {
+    //   calc(input[i]);
+    // }
+    let a = Math.pow(2, 10);
+    console.log(a);
+    a = a | (1 << 0);
+    console.log(a);
   };
 
   // Run
