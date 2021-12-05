@@ -9,6 +9,7 @@ const solution = (input) => {
   // Functions
   const solve = () => {
     console.log("Hi");
+    console.log("Not doing well.");
   };
 
   // Run
