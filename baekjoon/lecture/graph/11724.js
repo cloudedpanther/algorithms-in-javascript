@@ -10,6 +10,7 @@ const solution = (input) => {
   const solve = () => {
     console.log("Hi");
     console.log("Not doing well.");
+    console.log("Shit everywhere!");
   };
 
   // Run
