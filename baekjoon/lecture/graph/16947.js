@@ -11,8 +11,20 @@ const solution = (input) => {
   let check = new Array(N + 1).fill(0);
 
   // Functions
-  const findCycle = (index) => {
-    check[index] = 1;
+  const findCycle = (x, p) => {
+    if (check[x] === 1) return x;
+    check[x] = 1;
+    for (let i = 0; i < list[x].length; i++) {
+      const y = list[x][i];
+      if (y === p) continue;
+      const res = findCycle(y, x);
+      if (res === -2) return -2;
+      if (res >= 0) {
+        check[x] = 2;
+        if (x === res) return -2;
+        else return res;
+      }
+    }
   };
 
   const solve = () => {
