@@ -38,7 +38,7 @@ const solution = (input) => {
       list[n1].push(n2);
       list[n2].push(n1);
     }
-    console.log(list);
+    findCycle(1, 0);
   };
 
   // Run
