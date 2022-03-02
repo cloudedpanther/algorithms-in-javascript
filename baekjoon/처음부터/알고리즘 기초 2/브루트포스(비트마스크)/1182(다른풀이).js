@@ -8,7 +8,7 @@
 //   let sum = 0;
 //   let count = 0;
 
-//   go(0, 0);
+//   go(0);
 
 //   console.log(count);
 
