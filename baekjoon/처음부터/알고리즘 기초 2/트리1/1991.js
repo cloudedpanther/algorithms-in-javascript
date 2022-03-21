@@ -24,6 +24,10 @@ function dfs(tree, visited, order, currentIndex) {
   }
 }
 
+function inorder(tree) {
+  //
+}
+
 function preorderTraversal(tree) {
   const visited = new Array(tree.length).fill(false);
   const order = [];
